@@ -1,24 +1,49 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users 　テーブル
 
-Things you may want to cover:
+|Column            |Type   |Options    |
+|------------------|-------|-----------|
+|email             |string|null: false, unique: true|
+|encrypted_password|string|null: false|
+|nickname          |string|null: false|
 
-* Ruby version
+### Association
 
-* System dependencies
+ - has_many :motivations
+ - has_many :notifications
 
-* Configuration
+## motivations テーブル
 
-* Database creation
+| Column   | Type      | Options     |
+| ---------| --------- | ----------- |
+| user           | references | null: false, foreign_key: true  |
+| purchase_date  | date |null: false|
+| category_id    | integer | null: false |
+| person         | text | 
+| comment        | text | 
+| intuition      | text | null: false |
+| purpose        | text | null: false |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+ - has_many :notifications
+ - belongs_to :user
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## notifications テーブル
 
-* ...
+| Column   | Type      | Options     |
+| ---------| --------- | ----------- |
+| motivation_id      | integer | 
+| visiter_id  | integer| 
+| visited_id     | integer | 
+| action   | string  | 
+| checked  | boolean | null: false | default: false|
+
+### Association
+
+ - has_many :notifications
+ - has_one : motivation
+ 
+
