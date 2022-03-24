@@ -1,10 +1,14 @@
-<div class="contents row">
-  <% @motivations.each do |motivation| %>
-    <div class="content_post" style="background-image: url(<%= tweet.image %>);">
-      <p><%= motivation.text %></p>
-      <span class="name">
-        <%= motivation.name %>
+<main class="main">
+  <div class="inner">
+      <div class="card__wrapper">
+      <% @motivations.each do |motivation| %>
+        <div class="content_post" style="background-image: url(<%= motivation.image %>);"></div>
+          <p><%= motivation.text %></p>
+          <span class="name">
+        <%= motivation.title %>
       </span>
     </div>
-  <% end %> 
-</div>
+      <% end %>
+    </div>
+  </div>
+</main>
