@@ -7,13 +7,12 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700,900&display=swap" rel="stylesheet">
   </head>
 
   <body>
   <header class="header">
-      <div class="inner">
-        <div class="nav">
+      <div class="header__bar row">
+        <h1 class="grid-6"><a href="/">BetterReading37532</a></h1>
           <div class="nav__left">
             <%#= link_to image_tag("logo.png", class: :logo), root_path %>
           </div>
@@ -29,7 +28,6 @@
             </div>
           <% end %>
         </div>
-      </div>
     </header>
     <%= yield %>
   </body>

@@ -1,8 +1,9 @@
 <div class="main">
   <div class="inner">
     <div class="form__wrapper">
-      <h2 class="page-heading">新規投稿</h2>
-        <%# 部分テンプレートでフォームを表示する %>
+      <h2 class="page-heading">
+        <%= @motivation.title %>
+      </h2>
         <%= form_with model: @motivation, url: motivation_index_path, method: :post,  local: true do |f|%>
           <div class="field">
             <%= f.label :title, "タイトル" %><br />
@@ -11,7 +12,7 @@
 
           <div class="field">
             <%= f.label :image, "写真" %><br />
-             <%= f.file_field :image, id:"item-image" %>
+            <%= f.file_field  :image %>
           </div>
 
           <div class="field">
@@ -20,8 +21,8 @@
           </div>
 
           <div class="field">
-            <%= f.label :category, "カテゴリー" %><br />
-           <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box",id:"item-category"}) %>
+            <%= f.label :category_id, "カテゴリー" %><br />
+           <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
           </div>
 
           <div class="field">

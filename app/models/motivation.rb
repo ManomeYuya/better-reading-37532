@@ -1,12 +1,12 @@
 class Motivation < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category
+  
+  belongs_to :caregory
+  alidates :category_id, numericality: { other_than: 1 }
 
   has_many :notifications
   belongs_to :user
   has_one_attached :image
-
-  validates :category_id, numericality: { other_than: 1 , message: "can't be blank"}
 
   validates :title, presence: true
   validates :purchase_date, presence: true

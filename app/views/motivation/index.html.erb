@@ -2,13 +2,16 @@
   <div class="inner">
       <div class="card__wrapper">
       <% @motivations.each do |motivation| %>
-        <div class="content_post" style="background-image: url(<%= motivation.image %>);"></div>
+       <%= link_to motivartion_path(motivation.id) do %>
+          <div class='content_post'>
+          <%= image_tag item.image, class: "item-img" if item.image.attached?  %>
           <p><%= motivation.text %></p>
           <span class="name">
         <%= motivation.title %>
       </span>
     </div>
       <% end %>
+    <% end %>
     </div>
   </div>
 </main>

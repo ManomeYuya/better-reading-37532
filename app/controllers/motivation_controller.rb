@@ -8,12 +8,15 @@ class MotivationController < ApplicationController
   end
 
   def create
-    Motivation.create(motivation_params)
+    Motivation.create!(motivation_params)
     binding.pry
   end
 
   def motivation_params
-    params.require(:motivation).permit(:title, :purchase_date, :category_id, :person, :comment, :intuition, :purpose)
+    params.require(:motivation).permit(:title, :image, :purchase_date, :category_id, :person, :comment, :intuition, :purpose)
+  end
+
+  def show
   end
 
 end
