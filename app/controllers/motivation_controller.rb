@@ -9,14 +9,29 @@ class MotivationController < ApplicationController
 
   def create
     Motivation.create!(motivation_params)
-    binding.pry
-  end
-
-  def motivation_params
-    params.require(:motivation).permit(:title, :image, :purchase_date, :category_id, :person, :comment, :intuition, :purpose)
   end
 
   def show
+    @motivation = Motivation.find(params[:id])
+  end
+
+  def edit
+    @motivation = Motivation.find(params[:id])
+  end
+
+  def update
+    Motivation.update(motivation_params)
+  end
+
+  def destroy
+    @motivation = Motivation.find(params[:id])
+    @motivation.destroy
+  end
+
+  private
+
+  def motivation_params
+    params.require(:motivation).permit(:title, :image, :purchase_date, :category_id, :person, :comment, :intuition, :purpose).merge(user_id: current_user.id)
   end
 
 end

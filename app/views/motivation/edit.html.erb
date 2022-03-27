@@ -1,14 +1,17 @@
 <div class="main">
   <div class="inner">
     <div class="form__wrapper">
-      <h2 class="page-heading">
-        <%= @motivation.title %>
-      </h2>
-       <%= form_with model: @motivation,  method: :post,  local: true do |f|%>
-          
+      <h2 class="page-heading">投稿編集</h2>
+        <%# 部分テンプレートでフォームを表示する %>
+        <%= form_with model: @motivation, url: motivation_index_path, method: :post,  local: true do |f|%>
+          <div class="field">
+            <%= f.label :title, "タイトル" %><br />
+            <%= f.text_field :title %>
+          </div>
+
           <div class="field">
             <%= f.label :image, "写真" %><br />
-            <%= f.file_field  @motivation.image %>
+             <%= f.file_field :image, id:"item-image" %>
           </div>
 
           <div class="field">
@@ -17,8 +20,8 @@
           </div>
 
           <div class="field">
-            <%= f.label :category_id, "カテゴリー" %><br />
-           <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
+            <%= f.label :category, "カテゴリー" %><br />
+           <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box",id:"item-category"}) %>
           </div>
 
           <div class="field">
@@ -41,13 +44,10 @@
             <%= f.text_field :purpose %>
           </div>
 
-          <% if current_user == @motivation.user%>
-            <div class="prototype_manage">
-              <%= link_to "編集する", edit_motivation_path(@motivation), class: :prototype__btn %>
-              <%= link_to "削除する", motivation_path(@motivation), method: :delete, class: :prototype__btn %>
-            </div>
-          <% end %>
-          <% end %>
+          <div class="actions">
+            <%= f.submit "保存する", class: :form__btn  %>
+          </div>
+        <% end %>
     </div>
   </div>
 </div>
