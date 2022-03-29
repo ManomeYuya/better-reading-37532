@@ -3,7 +3,8 @@
     <div class="form__wrapper">
       <h2 class="page-heading">投稿編集</h2>
         <%# 部分テンプレートでフォームを表示する %>
-        <%= form_with model: @motivation, url: motivation_index_path, method: :post,  local: true do |f|%>
+        <%= form_with model: @motivation, url: motivation_path, method: :put,  local: true do |f|%>
+         <%= render 'shared/error_messages', model: f.object %>
           <div class="field">
             <%= f.label :title, "タイトル" %><br />
             <%= f.text_field :title %>

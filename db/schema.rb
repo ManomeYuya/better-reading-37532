@@ -40,13 +40,13 @@ ActiveRecord::Schema.define(version: 2022_03_24_073616) do
   end
 
   create_table "motivations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.string "title", null: false
     t.date "purchase_date", null: false
     t.integer "category_id", null: false
-    t.text "person", null: false
-    t.text "comment", null: false
-    t.text "intuition", null: false
+    t.text "person"
+    t.text "comment"
+    t.text "intuition"
     t.text "purpose", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

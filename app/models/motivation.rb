@@ -11,5 +11,7 @@ class Motivation < ApplicationRecord
   validates :purchase_date, presence: true
   validates :purpose, presence: true
   validates :image, presence: true
+  
+  validates :category_id, numericality: { other_than: 1 } 
 
 end

@@ -8,8 +8,13 @@ class MotivationController < ApplicationController
   end
 
   def create
-    Motivation.create!(motivation_params)
+    @motivation = Motivation.new(motivation_params)
+    if @motivation.save
+      redirect_to  root_path
+    else
+      render :new
   end
+ end
 
   def show
     @motivation = Motivation.find(params[:id])
@@ -20,7 +25,13 @@ class MotivationController < ApplicationController
   end
 
   def update
-    Motivation.update(motivation_params)
+    @motivation = Motivation.find(params[:id])
+    @motivation.update(motivation_params)
+    if @motivation.save
+      redirect_to motivation_path
+    else
+      render :edit
+    end
   end
 
   def destroy
