@@ -1,53 +1,71 @@
 <div class="main">
-  <div class="inner">
-    <div class="form__wrapper">
-      <h2 class="page-heading">
-        <%= @motivation.title %>
-      </h2>
-       <%= form_with model: @motivation,  method: :post,  local: true do |f|%>
-          
-          <div class="field">
-            <%= f.label :image, "写真" %><br />
-            <%= f.file_field  @motivation.image %>
-          </div>
+  <div class="item-show">
+  <div class="item-box">
+         <tr>
 
-          <div class="field">
-            <%= f.label :purchase_date, "購入日" %><br />
-            <%= f.date_field :purchase_date, class: :form__text %>
-          </div>
+          <td class="detail-value"><%=image_tag @motivation.image %></td>
+         </tr>
+      <div class="item-explain-box">
+      <table class="detail-table">  <%# table tbody 項目の枠をつける %>
+      <tbody>
 
-          <div class="field">
-            <%= f.label :category_id, "カテゴリー" %><br />
-           <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
-          </div>
+         <tr>
+          <th class="detail-item">ユーザー名</th>
+          <td class="detail-value"><%= @motivation.user.nickname %></td>
+         </tr>
 
-          <div class="field">
-            <%= f.label :person, "誰の紹介ですか？" %><br />
-            <%= f.text_area :person, class: :form__text %>
-          </div>
+         <tr>
+          <th class="detail-item">タイトル</th>
+          <td class="detail-value"><%= @motivation.title %></td>
+         </tr
 
-          <div class="field">
-            <%= f.label :comment, "何といっていましたか？" %><br />
-            <%= f.text_field :comment %>
-          </div>
+         <tr>
+          <th class="detail-item">購入日</th>
+          <td class="detail-value"><%= @motivation.purchase_date %></td>
+         </tr> 
 
-          <div class="field">
-            <%= f.label :intuition, "本を見た時どう思いましたか？" %><br />
-            <%= f.text_field :intuition %>
-          </div>
+         <tr>
+          <th class="detail-item">カテゴリー</th>
+          <td class="detail-value"><%= @motivation.category.name %></td>
+         </tr> 
 
-          <div class="field">
-            <%= f.label :purpose, "この本をなぜ読むのですか？" %><br />
-            <%= f.text_field :purpose %>
-          </div>
+         <tr>
+          <th class="detail-item">誰の紹介ですか？</th>
+          <td class="detail-value"><%= @motivation.person %></td>
+         </tr> 
+
+         <tr>
+          <th class="detail-item">何といっていましたか？</th>
+          <td class="detail-value"><%= @motivation.comment %></td>
+         </tr> 
+
+         <tr>
+          <th class="detail-item">本を見た時どう思いましたか？</th>
+          <td class="detail-value"><%= @motivation.intuition %></td>
+         </tr> 
+
+         <tr>
+          <th class="detail-item">この本をなぜ読むのですか？</th>
+          <td class="detail-value"><%= @motivation.purpose %></td>
+         </tr> 
+        </div>
+        </tbody> 
+    </table>
+
+          <% unless current_user == @motivation.user%>
+            <div class="prototype_manage">
+            <%= link_to "もどる", root_path, class: :form__btn %>
+            </div>
+          <% end %>
 
           <% if current_user == @motivation.user%>
             <div class="prototype_manage">
-              <%= link_to "編集する", edit_motivation_path(@motivation), class: :prototype__btn %>
-              <%= link_to "削除する", motivation_path(@motivation), method: :delete, class: :prototype__btn %>
+              <%= link_to "編集する", edit_motivation_path(@motivation), class: :form__btn %>
+              <%= link_to "削除する", motivation_path(@motivation), method: :delete, class: :form__btn %>
+              <%= link_to "もどる", root_path, class: :form__btn %>
             </div>
           <% end %>
-          <% end %>
-    </div>
+    
   </div>
+</div>
 </div>

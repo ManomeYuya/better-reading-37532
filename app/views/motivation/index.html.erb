@@ -1,16 +1,34 @@
 <main class="main">
+    <% if user_signed_in? %>
+      <div class="greeting">
+        <%= link_to current_user.nickname %>
+      </div>
+    <% end %>
   <div class="inner">
       <div class="card__wrapper">
       <% @motivations.each do |motivation| %>
        <%= link_to motivation_path(motivation.id) do %>
           <div class='content_post'>
-          <%= image_tag motivation.image, class: "item-img" if motivation.image.attached?  %>
+          <%= image_tag motivation.image.variant(resize: '500x500'), class: "item-img" if motivation.image.attached?  %>
           <span class="name">
-        <%= motivation.title %>
-        <%= motivation.purchase_date %>
-      </span>
-    </div>
+      </div>
       <% end %>
+      <div class="detail">
+        <div class="title">
+          <%= motivation.user.nickname %>
+        </div>
+        <div class="title">
+          <%= motivation.title %>
+        </div>
+        <div class="purchase_date">
+          <%= motivation.purchase_date %>
+        </div>
+        <div class="category">
+          <%= motivation.category.name %>
+        </div>
+        </span>
+      </div>
+    
     <% end %>
     </div>
   </div>
