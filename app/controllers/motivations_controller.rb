@@ -1,5 +1,6 @@
-class MotivationController < ApplicationController
+class MotivationsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
+  before_action :set_motivation, only: [:show, :edit, :update, :destroy]
 
   def index
     @motivations = Motivation.order("created_at DESC")
@@ -19,15 +20,14 @@ class MotivationController < ApplicationController
  end
 
   def show
-    @motivation = Motivation.find(params[:id])
+    @comment = Comment.new
+    @comments = @motivation.comments.includes(:user)
   end
 
   def edit
-    @motivation = Motivation.find(params[:id])
   end
 
   def update
-    @motivation = Motivation.find(params[:id])
     @motivation.update(motivation_params)
     if @motivation.save
       redirect_to motivation_path
@@ -37,7 +37,6 @@ class MotivationController < ApplicationController
   end
 
   def destroy
-    @motivation = Motivation.find(params[:id])
     @motivation.destroy
   end
 
@@ -51,6 +50,10 @@ class MotivationController < ApplicationController
     unless user_signed_in?
       redirect_to action: :index #サインインしていない場合、indexアクションに戻る
     end
+  end
+
+  def set_motivation
+    @motivation = Motivation.find(params[:id])
   end
   
 

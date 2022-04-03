@@ -12,6 +12,7 @@
 
  - has_many :motivations
  - has_many :notifications
+ - has_many :comments
 
 ## motivations テーブル
 
@@ -29,6 +30,21 @@
 
  - has_many :notifications
  - belongs_to :user
+ - has_many :comments
+
+
+ ## comments テーブル
+
+| Column   | Type      | Options     |
+| ---------| --------- | ----------- |
+| user_id | integer | 
+| motivation_id | integer| 
+| text | text | 
+
+### Association
+
+ - belongs_to :user
+ - belongs_to :motivation
 
 
 ## notifications テーブル

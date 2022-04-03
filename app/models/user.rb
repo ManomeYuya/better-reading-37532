@@ -4,8 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :motivations
-  has_many :notifications
-
   validates :nickname, presence: true
+
+  has_many :motivatons
+  has_many :notifications
+  has_many :comments
+  
 end

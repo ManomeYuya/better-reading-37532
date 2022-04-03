@@ -6,11 +6,13 @@ class Motivation < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :category
   has_one_attached :image
+  has_many :comments
 
   validates :title, presence: true
   validates :purchase_date, presence: true
   validates :purpose, presence: true
   validates :image, presence: true
+  
   
   validates :category_id, numericality: { other_than: 1 } 
 
