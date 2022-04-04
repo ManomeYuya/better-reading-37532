@@ -21,7 +21,7 @@ class MotivationsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = @motivation.comments.includes(:user)
+    @comments = @motivation.comments
   end
 
   def edit

@@ -1,8 +1,13 @@
 class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
-    if @comment.save!
-      redirect_to motivation_path(@comment)# コメントと結びつくmotivationの詳細画面に遷移する
+    if @comment.save
+      redirect_to motivation_path(@comment.motivation)# コメントと結びつくmotivationの詳細画面に遷移する
+    else
+      @motivation = @comment.motivation
+      @comments = @motivation.comments
+      render "motivations/show"
+    end
     end
   end
 
