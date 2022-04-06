@@ -3,7 +3,7 @@
     <div class="form__wrapper">
       <h2 class="page-heading">新規投稿</h2>
         <%# 部分テンプレートでフォームを表示する %>
-        <%= form_with model: @motivation, url: motivation_index_path, method: :post,  local: true do |f|%>
+        <%= form_with model: @motivation, url: motivations_path, method: :post,  local: true do |f|%>
          <%= render 'shared/error_messages', model: f.object %>
           <div class="field">
             <%= f.label :title, "タイトル" %><br />
@@ -27,22 +27,22 @@
 
           <div class="field">
             <%= f.label :person, "誰の紹介ですか？" %><br />
-            <%= f.text_area :person, class: :form__text %>
+            <%= f.text_field :person, class: :form__text %>
           </div>
 
           <div class="field">
             <%= f.label :comment, "何といっていましたか？" %><br />
-            <%= f.text_field :comment %>
+            <%= f.text_field :comment, class: :form__text %>
           </div>
 
           <div class="field">
             <%= f.label :intuition, "本を見た時どう思いましたか？" %><br />
-            <%= f.text_field :intuition %>
+            <%= f.text_field :intuition, class: :form__text %>
           </div>
 
           <div class="field">
             <%= f.label :purpose, "この本をなぜ読むのですか？" %><br />
-            <%= f.text_field :purpose %>
+            <%= f.text_field :purpose, class: :form__text %>
           </div>
 
           <div class="actions">

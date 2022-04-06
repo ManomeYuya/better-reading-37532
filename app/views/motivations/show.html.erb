@@ -73,10 +73,10 @@
           <% end %>
 
           <div class="comments">
-          <h4>＜コメント一覧＞</h4>
-          <%= @comments.each do |comment| %>
+          <h4>［コメント一覧］</h4>
+          <% @comments.each do |comment| %>
             <p>
-              <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %></strong>
+              <strong><%= link_to "#{comment.user.nickname}さん：", "/users/#{comment.user_id}" %></strong>
               <%= comment.text %>
             </p>
            <% end %>

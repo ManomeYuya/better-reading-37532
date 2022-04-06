@@ -1,7 +1,8 @@
 <main class="main">
     <% if user_signed_in? %>
       <div class="greeting">
-        <%= link_to current_user.nickname %>
+      <%= link_to "#{current_user.nickname}さん、ようこそ！" %>
+      <p>読みたい本を投稿してみよう！</p>
       </div>
     <% end %>
   <div class="inner">
@@ -15,16 +16,16 @@
       <% end %>
       <div class="detail">
         <div class="title">
-          <%= motivation.user.nickname %>
+          <%= "投稿者: #{motivation.user.nickname}" %>
         </div>
         <div class="title">
-          <%= motivation.title %>
+          <%= "タイトル: #{motivation.title}" %>
         </div>
         <div class="purchase_date">
-          <%= motivation.purchase_date %>
+          <%= "購入日: #{motivation.purchase_date}" %>
         </div>
         <div class="category">
-          <%= motivation.category.name %>
+          <%= "カテゴリー: #{motivation.category.name}" %>
         </div>
         </span>
          
