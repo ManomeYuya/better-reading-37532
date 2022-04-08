@@ -1,5 +1,5 @@
 class MotivationsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show]
+  before_action :move_to_index, except: [:index, :show, :search]
   before_action :set_motivation, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -38,6 +38,10 @@ class MotivationsController < ApplicationController
 
   def destroy
     @motivation.destroy
+  end
+
+  def search
+    @motivations = Motivation.search(params[:keyword])
   end
 
   private

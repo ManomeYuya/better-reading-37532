@@ -1,0 +1,31 @@
+
+<div class="contents row">
+  <% @motivations.each do |motivation| %>
+  <%= link_to motivation_path(motivation.id) do %>
+          <div class='content_post'>
+          <%= image_tag motivation.image.variant(resize: '500x500'), class: "item-img" if motivation.image.attached?  %>
+          <span class="name">
+      </div>
+      <% end %>
+      <div class="detail">
+        <div class="title">
+          <%= "投稿者: #{motivation.user.nickname}" %>
+        </div>
+        <div class="title">
+          <%= "タイトル: #{motivation.title}" %>
+        </div>
+        <div class="purchase_date">
+          <%= "購入日: #{motivation.purchase_date}" %>
+        </div>
+        <div class="category">
+          <%= "カテゴリー: #{motivation.category.name}" %>
+        </div>
+        </span>
+         
+      </div>
+  <% end %>
+</div>
+<%= form_with(url: search_motivations_path, local: true, method: :get, class: "search-form") do |form| %>
+  <%= form.text_field :keyword, placeholder: "タイトルを検索", class: "search-input" %>
+  <%= form.submit "検索", class: "search-btn" %>
+<% end %>

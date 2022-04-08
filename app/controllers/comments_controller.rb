@@ -8,7 +8,6 @@ class CommentsController < ApplicationController
       @comments = @motivation.comments
       render "motivations/show"
     end
-    end
   end
 
   private

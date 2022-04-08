@@ -27,11 +27,30 @@
         <div class="category">
           <%= "カテゴリー: #{motivation.category.name}" %>
         </div>
-        </span>
-         
-      </div>
+        </div>
+        
+      <%# <% if motivation.favorited?(current_user) %>  
+    <%# 一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ %>
+      <%# <%= link_to motivation_favorites_path(motivation.id), method: :delete do %> 
+        <span style="color:red;">❤︎</span>
+         <%# <% end %> 
+    <%# 一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ %>
+      <%# <%= link_to motivation_favorites_path(motivation.id), method: :post do %> 
+        <span>❤︎</span>
+        <%# <% end %> 
+     <%# <% end %>  
+      </span>
+      
     
     <% end %>
     </div>
   </div>
+  <%= form_with(url: search_motivations_path, local: true, method: :get, class: "search-form") do |form| %>
+  <%= form.text_field :keyword, placeholder: "タイトルを検索", class: "search-input" %>
+  <%= form.submit "検索", class: "search-btn" %>
+<% end %>
 </main>
+<div class="footer">
+ <div class="copyright">
+ </div>
+</div>

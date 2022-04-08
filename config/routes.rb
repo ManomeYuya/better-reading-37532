@@ -4,5 +4,9 @@ Rails.application.routes.draw do
   root to: "motivations#index"
   resources :motivations do
    resources :comments, only: :create
+   resource :favorites, only: [:create, :destroy]
+  collection do
+    get 'search' #motivationsに基づく検索、コメント機能のためネストする
   end
+end
 end

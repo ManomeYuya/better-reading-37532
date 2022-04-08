@@ -6,8 +6,9 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
 
-  has_many :motivatons
+  has_many :motivatons, dependent: :destroy
   has_many :notifications
   has_many :comments
+  has_many :favorites, dependent: :destroy
   
 end
