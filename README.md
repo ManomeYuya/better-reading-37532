@@ -11,24 +11,25 @@
 ### Association
 
  - has_many :motivations
- - has_many :notifications
  - has_many :comments
+ - has_many :favorites
 
 ## motivations テーブル
 
 | Column   | Type      | Options     |
 | ---------| --------- | ----------- |
-| user           | references | null: false, foreign_key: true  |
+| user_id        |integer| 
 | purchase_date  | date |null: false|
 | category_id    | integer | null: false |
+| title          | string |  null: false |
 | person         | text | 
 | comment        | text | 
-| intuition      | text | null: false |
+| intuition      | text | 
 | purpose        | text | null: false |
 
 ### Association
 
- - has_many :notifications
+ - has_many :favorites
  - belongs_to :user
  - has_many :comments
 
@@ -39,27 +40,23 @@
 | ---------| --------- | ----------- |
 | user_id | integer | 
 | motivation_id | integer| 
-| text | text | 
+| text | text | null: false|
 
 ### Association
 
  - belongs_to :user
  - belongs_to :motivation
 
-
-## notifications テーブル
+  ## favorites テーブル
 
 | Column   | Type      | Options     |
 | ---------| --------- | ----------- |
-| motivation_id      | integer | 
-| visiter_id  | integer| 
-| visited_id     | integer | 
-| action   | string  | 
-| checked  | boolean | null: false | default: false|
+| user | references | null: false,foreign_key: true|
+| motivation | references| null: false,foreign_key: true|
 
 ### Association
 
- - has_many :notifications
- - has_one : motivation
+- belongs_to :user
+- belongs_to :motivation
  
 
