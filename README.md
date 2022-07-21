@@ -45,7 +45,7 @@ https://docs.google.com/spreadsheets/d/1ilysZpn1Va-bW8vx7kCCRvQ8T0eOxKk8O49D3-2C
 
 |Column            |Type   |Options    |
 |------------------|-------|-----------|
-|email             |string|null: false, unique: true|
+|email             |string|null: false, unique: true| 
 |encrypted_password|string|null: false|
 |nickname          |string|null: false|
 
